@@ -23,7 +23,9 @@ const readFiles = async () => {
     const files = await readdir(srcDir, { withFileTypes: true });
     // pass each file to copy
     for (const file of files) {
-      await copyDir(file.name);
+      if (file.isFile()) {
+        await copyDir(file.name);
+      }
     }
   } catch (err) {
     console.error(err);
