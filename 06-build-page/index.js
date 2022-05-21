@@ -102,6 +102,7 @@ const copyStyles = (readStream, writeStream) => {
     console.error(error);
   });
   readStream.on('end', () => {
+    output += '\n';
     writeStream.write(output);
   });
 };
